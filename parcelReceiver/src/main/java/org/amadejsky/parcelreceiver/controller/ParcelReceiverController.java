@@ -14,17 +14,17 @@ public class ParcelReceiverController {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-//    @RabbitListener(queues = "test")
-//    public void listener(NotificationEmail notificationEmail){
-//        System.out.println(
-//                "Email: "+notificationEmail.getEmail()+"\n "+
-//                "Title "+notificationEmail.getTitle()+"\n "+
-//                "Content: "+notificationEmail.getContent()
-//        );
-//    }
-
     @RabbitListener(queues = "test")
-    public void listenerMessage(String message){
-        System.out.println("Received message is: "+message);
+    public void listener(NotificationEmail notificationEmail){
+        System.out.println(
+                "Email: "+notificationEmail.getEmail()+"\n "+
+                "Title "+notificationEmail.getTitle()+"\n "+
+                "Content: "+notificationEmail.getContent()
+        );
     }
+
+//    @RabbitListener(queues = "test")
+//    public void listenerMessage(String message){
+//        System.out.println("Received message is: "+message);
+//    }
 }
