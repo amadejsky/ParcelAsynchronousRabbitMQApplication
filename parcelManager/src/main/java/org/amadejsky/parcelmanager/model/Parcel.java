@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -12,11 +13,11 @@ public class Parcel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    private String addres;
+    private String address;
     @NotBlank
     private String email;
-    @NotBlank
-    private int weight;
+    @Min(value = 0, message = "Weight must be positive number")
+    private double weight;
 
     public Long getId() {
         return id;
@@ -26,12 +27,12 @@ public class Parcel {
         this.id = id;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {
@@ -42,11 +43,11 @@ public class Parcel {
         this.email = email;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }
