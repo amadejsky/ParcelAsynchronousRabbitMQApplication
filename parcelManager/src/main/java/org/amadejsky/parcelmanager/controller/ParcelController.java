@@ -2,13 +2,10 @@ package org.amadejsky.parcelmanager.controller;
 
 import org.amadejsky.parcelmanager.model.Parcel;
 import org.amadejsky.parcelmanager.repository.ParcelRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ParcelController {
@@ -26,5 +23,10 @@ public class ParcelController {
     @PostMapping("/parcels")
     public void post(@RequestBody Parcel parcel){
         parcelRepository.save(parcel);
+    }
+
+    @GetMapping("/parcels/{id}")
+    public Optional<Parcel> getParcelById(@PathVariable Long id){
+        return parcelRepository.findById(id);
     }
 }
