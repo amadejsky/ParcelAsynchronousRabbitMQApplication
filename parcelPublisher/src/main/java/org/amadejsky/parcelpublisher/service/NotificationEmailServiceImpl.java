@@ -22,6 +22,7 @@ public class NotificationEmailServiceImpl implements NotificationEmailService{
     public void sendNotificationEmail(Long parcelId) {
         Parcel parcel = restTemplate.exchange(URL +parcelId,
                 HttpMethod.GET, HttpEntity.EMPTY, Parcel.class).getBody();
+
         NotificationEmail notificationEmail = new NotificationEmail();
         notificationEmail.setEmail(parcel.getEmail());
         notificationEmail.setTitle("Hi dear customer!");

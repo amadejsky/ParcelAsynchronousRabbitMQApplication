@@ -26,7 +26,7 @@ public class ParcelController {
     }
 
     @GetMapping("/parcels/{id}")
-    public Optional<Parcel> getParcelById(@PathVariable Long id){
-        return parcelRepository.findById(id);
+    public Optional<Parcel> getParcelById(@PathVariable String code){
+        return parcelRepository.findById(code);
     }
 }
