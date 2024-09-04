@@ -31,7 +31,7 @@ public class AdminController {
         return parcelManagerService.getParcels();
     }
 
-    @GetMapping("/secure-operation")
+    @GetMapping("/parcels/secure-operation")
     public ResponseEntity<String> secureOperation() {
        String response = parcelManagerService.performSecureOperation("true");
        return ResponseEntity.ok(response);

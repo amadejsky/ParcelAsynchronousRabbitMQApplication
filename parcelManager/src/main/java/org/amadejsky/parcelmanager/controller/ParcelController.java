@@ -2,6 +2,7 @@ package org.amadejsky.parcelmanager.controller;
 
 import org.amadejsky.parcelmanager.model.Parcel;
 import org.amadejsky.parcelmanager.repository.ParcelRepository;
+import org.amadejsky.parcelmanager.service.ParcelService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,26 +11,32 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/parcels")
 public class ParcelController {
-    private final ParcelRepository parcelRepository;
+    private final ParcelService parcelService;
 
-    public ParcelController(ParcelRepository parcelRepository) {
-        this.parcelRepository = parcelRepository;
+    public ParcelController(ParcelService parcelService) {
+        this.parcelService = parcelService;
     }
 
-    @GetMapping("/parcels")
+    @GetMapping()
     public List<Parcel> getAll(){
-        return parcelRepository.findAll();
+        return parcelService.getAllParcels();
     }
 
-    @PostMapping("/parcels")
+    @PostMapping()
     public void post(@RequestBody Parcel parcel){
-        parcelRepository.save(parcel);
+        parcelService.addParcel(parcel);
     }
 
-    @GetMapping("/parcels/{id}")
-    public Optional<Parcel> getParcelById(@PathVariable String code){
-        return parcelRepository.findById(code);
+    @GetMapping("/{code}")
+    public Parcel getParcelById(@PathVariable String code){
+        return parcelService.getParcelbyId(code);
+    }
+
+    @DeleteMapping("/{code}")
+    public void deleteParcel(@PathVariable String code){
+        parcelService.deleteParcel(code);
     }
 
     @GetMapping("/secure-operation")
@@ -39,5 +46,7 @@ public class ParcelController {
         }
         return ResponseEntity.ok("This operation is only accessible via Feign client.");
     }
+
+
 
 }

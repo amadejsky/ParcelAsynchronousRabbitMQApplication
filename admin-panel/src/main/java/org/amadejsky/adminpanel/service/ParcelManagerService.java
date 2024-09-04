@@ -14,7 +14,7 @@ public interface ParcelManagerService {
     List<Parcel> getParcels();
 
 
-    @GetMapping("/secure-operation")
+    @GetMapping("/parcels/secure-operation")
     String performSecureOperation(@RequestHeader("Feign-Client") String feignClientHeader);
 
 }
