@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.amadejsky</groupId>
-    <artifactId>admin-panel</artifactId>
+    <artifactId>cutomer-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>admin-panel</name>
-    <description>admin-panel</description>
+    <name>customer-client</name>
+    <description>customer-client</description>
     <url/>
     <licenses>
         <license/>

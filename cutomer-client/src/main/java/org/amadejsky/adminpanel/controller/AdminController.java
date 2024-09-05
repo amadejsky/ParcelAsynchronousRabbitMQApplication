@@ -17,27 +17,9 @@ public class AdminController {
     public AdminController(ParcelManagerService parcelManagerService) {
         this.parcelManagerService = parcelManagerService;
     }
-
-    @GetMapping()
-    public String connection(){
-        return "Connection Test!";
-    }
-
-    @GetMapping("/parcels")
-    public List<Parcel> getParcels(@RequestParam(required = false) Parcel.Status status){
-        return parcelManagerService.getParcels(status);
-    }
-
-    @GetMapping("/parcels/secure-operation")
-    public ResponseEntity<String> secureOperation() {
-       String response = parcelManagerService.performSecureOperation("true");
-       return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/parcels/delete/{code}")
-    public ResponseEntity<String> deleteParcel(@PathVariable String code) {
-        String response = parcelManagerService.performDeleteOperation("true",code);
-        return ResponseEntity.ok(response);
+    @GetMapping("/parcels/{code}")
+    public Parcel connection(@PathVariable String code){
+        return parcelManagerService.getParcelById(code);
     }
     @PostMapping("/parcels")
     public ResponseEntity<String> sendParcel(@RequestBody Parcel parcel){
@@ -46,3 +28,20 @@ public class AdminController {
     }
 
 }
+
+//    @GetMapping("/parcels")
+//    public List<Parcel> getParcels(@RequestParam(required = false) Parcel.Status status){
+//        return parcelManagerService.getParcels(status);
+//    }
+
+//    @GetMapping("/parcels/secure-operation")
+//    public ResponseEntity<String> secureOperation() {
+//       String response = parcelManagerService.performSecureOperation("true");
+//       return ResponseEntity.ok(response);
+//    }
+//
+//    @GetMapping("/parcels/delete/{code}")
+//    public ResponseEntity<String> deleteParcel(@PathVariable String code) {
+//        String response = parcelManagerService.performDeleteOperation("true",code);
+//        return ResponseEntity.ok(response);
+//    }
