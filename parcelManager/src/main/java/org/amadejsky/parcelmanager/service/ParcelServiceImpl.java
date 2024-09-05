@@ -15,8 +15,11 @@ public class ParcelServiceImpl implements ParcelService{
     }
 
     @Override
-    public List<Parcel> getParcels() {
-        return parcelRepository.findAll();
+    public List<Parcel> getParcels(Parcel.Status status) {
+        if(status!=null){
+            return parcelRepository.findAllByStatus(status);
+        }
+        return parcelRepository.findAllByStatusNotInactive();
     }
 
     @Override

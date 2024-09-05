@@ -24,8 +24,8 @@ public class AdminController {
     }
 
     @GetMapping("/parcels")
-    public List<Parcel> getParcels(){
-        return parcelManagerService.getParcels();
+    public List<Parcel> getParcels(@RequestParam(required = false) Parcel.Status status){
+        return parcelManagerService.getParcels(status);
     }
 
     @GetMapping("/parcels/secure-operation")

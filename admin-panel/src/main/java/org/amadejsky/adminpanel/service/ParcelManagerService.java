@@ -2,10 +2,7 @@ package org.amadejsky.adminpanel.service;
 
 import org.amadejsky.adminpanel.model.dto.Parcel;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,7 +10,7 @@ import java.util.List;
 public interface ParcelManagerService {
 
     @GetMapping("/parcels")
-    List<Parcel> getParcels();
+    List<Parcel> getParcels(@RequestParam(required = false) Parcel.Status status);
 
 
     @GetMapping("/parcels/secure-operation")
@@ -23,7 +20,14 @@ public interface ParcelManagerService {
     String performDeleteOperation(@RequestHeader("Feign-Client") String feignClientHeader,
                                   @PathVariable String code);
 
+
 }
+
+
+//@GetMapping("/parcels")
+//public List<Parcel> getParcels(){
+//    return parcelManagerService.getParcels();
+//}
 //"/delete/{code}")
 
 //@GetMapping("/secure-operation")

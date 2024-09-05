@@ -20,8 +20,8 @@ public class ParcelController {
     }
 
     @GetMapping()
-    public List<Parcel> getAll(){
-        return parcelService.getParcels();
+    public List<Parcel> getAll(@RequestParam(required = false) Parcel.Status status){
+        return parcelService.getParcels(status);
     }
 
     @PostMapping()

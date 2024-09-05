@@ -19,6 +19,18 @@ public class Parcel {
     private String email;
     @Min(value = 0, message = "Weight must be positive number")
     private double weight;
+    private Status status = Status.PENDING;
 
+
+    public enum Status{
+        PENDING,
+        SHIPPED,
+        SENT_FROM_FACILITY,
+        OUT_FOR_DELIVERY,
+        DELIVERED,
+        DELAYED,
+        INACTIVE
+
+    }
 
 }
