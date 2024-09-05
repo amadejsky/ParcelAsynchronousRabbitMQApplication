@@ -39,5 +39,10 @@ public class AdminController {
         String response = parcelManagerService.performDeleteOperation("true",code);
         return ResponseEntity.ok(response);
     }
+    @PostMapping("/parcels")
+    public ResponseEntity<String> sendParcel(@RequestBody Parcel parcel){
+        parcelManagerService.performPostOperation(parcel);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Parcel created successfully");
+    }
 
 }

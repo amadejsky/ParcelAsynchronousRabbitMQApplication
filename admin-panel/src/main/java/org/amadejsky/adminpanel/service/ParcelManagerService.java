@@ -20,9 +20,15 @@ public interface ParcelManagerService {
     String performDeleteOperation(@RequestHeader("Feign-Client") String feignClientHeader,
                                   @PathVariable String code);
 
+    @PostMapping("/parcels")
+    String performPostOperation(@RequestBody Parcel parcel);
+
 
 }
-
+//@PostMapping()
+//public void post(@RequestBody Parcel parcel){
+//    parcelService.addParcel(parcel);
+//}
 
 //@GetMapping("/parcels")
 //public List<Parcel> getParcels(){
