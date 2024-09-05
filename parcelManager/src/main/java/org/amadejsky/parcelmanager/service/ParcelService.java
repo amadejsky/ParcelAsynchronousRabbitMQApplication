@@ -11,5 +11,7 @@ public interface ParcelService {
     Parcel getParcel(String code);
     void deleteParcel(String code);
 
+    void setStatus(String code, Parcel.Status status);
+
 
 }

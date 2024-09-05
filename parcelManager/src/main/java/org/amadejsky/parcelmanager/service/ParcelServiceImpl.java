@@ -39,7 +39,17 @@ public class ParcelServiceImpl implements ParcelService{
     public void deleteParcel(String code) {
         Parcel parcel = parcelRepository.findById(code)
                 .orElseThrow(IllegalArgumentException::new);
-        parcelRepository.deleteById(code);
+        parcel.setStatus(Parcel.Status.INACTIVE);
+        parcelRepository.save(parcel);
+//        parcelRepository.deleteById(code);
 
+    }
+
+    @Override
+    public void setStatus(String code, Parcel.Status status) {
+        Parcel parcel = parcelRepository.findById(code)
+                .orElseThrow(IllegalArgumentException::new);
+        parcel.setStatus(status);
+        parcelRepository.save(parcel);
     }
 }

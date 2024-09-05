@@ -46,6 +46,10 @@ public class ParcelController {
         }
         return ResponseEntity.ok("This operation is only accessible via Feign client.");
     }
+    @GetMapping("/{code}/change-status")
+    public void setStatus(@PathVariable String code,@RequestParam Parcel.Status status){
+        parcelService.setStatus(code, status);
+    }
 
 //    @DeleteMapping("/delete/{code}")
 //    public ResponseEntity<String> deleteParcel(@RequestHeader(value = "Feign-Client", required = false) String feignClient,
