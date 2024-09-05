@@ -20,5 +20,10 @@ public class ParcelManagerApplication {
         ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
         return new Jackson2JsonMessageConverter(mapper);
     }
+//    @Bean
+//    public MessageConverter massageConverter(){
+//        return new Jackson2JsonMessageConverter();
+//    }
+
 
 }

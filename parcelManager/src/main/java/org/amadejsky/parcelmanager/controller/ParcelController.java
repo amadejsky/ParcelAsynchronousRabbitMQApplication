@@ -21,7 +21,7 @@ public class ParcelController {
 
     @GetMapping()
     public List<Parcel> getAll(){
-        return parcelService.getAllParcels();
+        return parcelService.getParcels();
     }
 
     @PostMapping()
@@ -31,7 +31,7 @@ public class ParcelController {
 
     @GetMapping("/{code}")
     public Parcel getParcelById(@PathVariable String code){
-        return parcelService.getParcelbyId(code);
+        return parcelService.getParcel(code);
     }
 
     @DeleteMapping("/{code}")
@@ -45,6 +45,21 @@ public class ParcelController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
         }
         return ResponseEntity.ok("This operation is only accessible via Feign client.");
+    }
+
+//    @DeleteMapping("/delete/{code}")
+//    public ResponseEntity<String> deleteParcel(@RequestHeader(value = "Feign-Client", required = false) String feignClient,
+//                                               @PathVariable String code) {
+//        if (!"true".equals(feignClient)) {
+//            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied!");
+//        }
+//        parcelService.deleteParcel(code);
+//        return ResponseEntity.ok("Succesfuly performed delete operation on parcel: "+code);
+//    }
+
+    @DeleteMapping("/delete/{code}")
+    public void deleteParcelCode(@PathVariable String code) {
+        parcelService.deleteParcel(code);
     }
 
 

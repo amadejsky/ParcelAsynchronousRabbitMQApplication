@@ -15,8 +15,14 @@ public class ParcelServiceImpl implements ParcelService{
     }
 
     @Override
-    public List<Parcel> getAllParcels() {
+    public List<Parcel> getParcels() {
         return parcelRepository.findAll();
+    }
+
+    @Override
+    public Parcel getParcel(String code) {
+        return parcelRepository.findById(code)
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
@@ -24,11 +30,7 @@ public class ParcelServiceImpl implements ParcelService{
         return parcelRepository.save(parcel);
     }
 
-    @Override
-    public Parcel getParcelbyId(String code) {
-        return parcelRepository.findById(code)
-                .orElseThrow(IllegalArgumentException::new);
-    }
+
 
     @Override
     public void deleteParcel(String code) {

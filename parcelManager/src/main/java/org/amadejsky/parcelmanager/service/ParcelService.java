@@ -6,9 +6,9 @@ import org.amadejsky.parcelmanager.repository.ParcelRepository;
 import java.util.List;
 
 public interface ParcelService {
-    List<Parcel> getAllParcels();
+    List<Parcel> getParcels();
     Parcel addParcel(Parcel parcel);
-    Parcel getParcelbyId(String code);
+    Parcel getParcel(String code);
     void deleteParcel(String code);
 
 
