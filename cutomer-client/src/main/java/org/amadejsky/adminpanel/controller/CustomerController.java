@@ -4,18 +4,23 @@ import org.amadejsky.adminpanel.model.dto.Parcel;
 import org.amadejsky.adminpanel.service.ParcelManagerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequestMapping("/manage")
-public class AdminController {
+public class CustomerController {
 
     private final ParcelManagerService parcelManagerService;
 
-    public AdminController(ParcelManagerService parcelManagerService) {
+    public CustomerController(ParcelManagerService parcelManagerService) {
         this.parcelManagerService = parcelManagerService;
+    }
+    @RequestMapping(path="/app")
+    public String appPage(Model model){
+        model.addAttribute("parcel", new Parcel());
+        return "App";
     }
     @GetMapping("/parcels/{code}")
     public Parcel connection(@PathVariable String code){

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>|APP| Expense Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .body{
+        width:100vw;
+        height:103vh;
+        background: url("/bg-ac.png");
+        background-size: cover;
+        background-position: center;
+        margin-top: -10vh;
+    }
+    .formUser{
+        border: 1px solid #6D214F;
+        width:40vw;
+        height:auto;
+        background-color: black;
+        opacity: 0.65;
+        color:white;
+        padding: 4vw;
+        margin-top: 20vh;
+        margin-left:21vw;
+        display: inline-block;
+        text-align: left;
+        box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    }
+    .form-control{
+        height:70%;
+        width:40%;
+        border: 7px outset #6d214f;
+        display: inline-block;
+        text-align: right;
+    }
+    .input{
+        display: inline-block;
+        text-align: right;
+        border: 7px outset #6d214f;
+    }
+    .amount{
+        font-size: larger;
+        border: 7px outset #6d214f;
+    }
+    .navbar-brand{
+        color: #F0F0F0;
+    }
+    .navbar-nav .nav-link{
+        color: #F0F0F0;
+    }
+    @media (max-width: 1420px) {
+        .formUser{
+            font-size: 1vw;
+
+        }
+        .form-control{
+            height:60%;
+            width:40%;
+        }
+
+    }
+    @media (max-width: 800px) {
+        .formUser{
+            font-size: 1vw;
+
+        }
+        .form-control{
+            height:30%;
+            width:40%;
+        }
+
+    }
+</style>
+<body class="">
+<nav class="navbar navbar-expand-lg" style="background-color: #0A005A">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Your Finance Friend!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link"  href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #6D214F" href="/app">App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/report">Report</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="body">
+    <!--/*@thymesVar id="parcel" type="org.amadejsky.adminpanel.model.dto.Parcel"*/-->
+    <form action="#" th:action="@{/parcels}" th:object="${parcel}" method="post" class="formUser">
+        <label for="address" class="col-form-label">Cost:</label>
+        <input class="amount form-control" type="text" th:field="*{address}" id="address" placeholder="Address">
+        <br>
+        <label for="email" class="col-form-label">Cost:</label>
+        <input class="amount form-control" type="text" th:field="*{email}" id="email" placeholder="Email">
+        <br>
+        <label for="weight" class="col-form-label">Cost:</label>
+        <input class="amount form-control" type="number" th:field="*{weight}" id="weight" placeholder="Weight" step="0.01">
+        <br>
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+</div>
+
+<div class="footer"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
