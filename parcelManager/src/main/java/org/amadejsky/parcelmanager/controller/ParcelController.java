@@ -46,7 +46,10 @@ public class ParcelController {
 
 
 }
-
+// These methods have been commented out because the application's design has changed.
+// As a result, they are no longer needed for the current stage of development.
+// They may be removed or restored in the future if necessary.
+// They are left here as a reference for future testing or changes.
 
 
 //@GetMapping("/secure-operation")

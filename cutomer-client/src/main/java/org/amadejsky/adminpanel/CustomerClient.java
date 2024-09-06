@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableFeignClients
-public class AdminPanelApplication {
+public class CustomerClient {
 
     public static void main(String[] args) {
-        SpringApplication.run(AdminPanelApplication.class, args);
+        SpringApplication.run(CustomerClient.class, args);
     }
 
     @Bean

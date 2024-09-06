@@ -34,7 +34,10 @@ public class ParcelServiceImpl implements ParcelService{
 
     @Override
     public Parcel addParcel(Parcel parcel) {
-        return parcelRepository.save(parcel);
+        parcelRepository.save(parcel);
+        buildAndSendNotification(parcel, Notification.Info.CREATED);
+        return parcel;
+
     }
 
 
@@ -45,7 +48,8 @@ public class ParcelServiceImpl implements ParcelService{
                 .orElseThrow(IllegalArgumentException::new);
         parcel.setStatus(Parcel.Status.INACTIVE);
         parcelRepository.save(parcel);
-//        parcelRepository.deleteById(code);
+        buildAndSendNotification(parcel, Notification.Info.DELETED);
+
 
     }
 
@@ -55,8 +59,13 @@ public class ParcelServiceImpl implements ParcelService{
                 .orElseThrow(IllegalArgumentException::new);
         parcel.setStatus(status);
         parcelRepository.save(parcel);
+        buildAndSendNotification(parcel, Notification.Info.UPDATED);
+    }
+
+    private void buildAndSendNotification(Parcel parcel, Notification.Info info) {
         Notification notification = Notification.builder()
-                .Code(parcel.getCode())
+                .info(info)
+                .code(parcel.getCode())
                 .address(parcel.getAddress())
                 .status(parcel.getStatus())
                 .build();

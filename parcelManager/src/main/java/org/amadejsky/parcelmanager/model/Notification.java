@@ -6,7 +6,14 @@ import lombok.Data;
 @Data
 @Builder
 public class Notification {
-    private String Code;
+    private Info info;
+    private String code;
     private String address;
     private Parcel.Status status;
+
+    public enum Info{
+        CREATED,
+        UPDATED,
+        DELETED
+    }
 }
