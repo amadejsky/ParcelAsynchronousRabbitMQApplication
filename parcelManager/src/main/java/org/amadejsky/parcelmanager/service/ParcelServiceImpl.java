@@ -1,7 +1,9 @@
 package org.amadejsky.parcelmanager.service;
 
+import org.amadejsky.parcelmanager.model.Notification;
 import org.amadejsky.parcelmanager.model.Parcel;
 import org.amadejsky.parcelmanager.repository.ParcelRepository;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +11,11 @@ import java.util.List;
 public class ParcelServiceImpl implements ParcelService{
 
     private final ParcelRepository parcelRepository;
+    private final RabbitTemplate rabbitTemplate;
 
-    public ParcelServiceImpl(ParcelRepository parcelRepository) {
+    public ParcelServiceImpl(ParcelRepository parcelRepository, RabbitTemplate rabbitTemplate) {
         this.parcelRepository = parcelRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @Override
@@ -51,5 +55,11 @@ public class ParcelServiceImpl implements ParcelService{
                 .orElseThrow(IllegalArgumentException::new);
         parcel.setStatus(status);
         parcelRepository.save(parcel);
+        Notification notification = Notification.builder()
+                .Code(parcel.getCode())
+                .address(parcel.getAddress())
+                .status(parcel.getStatus())
+                .build();
+        rabbitTemplate.convertAndSend("parcel_manager_event",notification);
     }
 }
