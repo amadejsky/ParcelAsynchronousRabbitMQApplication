@@ -116,10 +116,12 @@
     <form action="#" th:action="@{/manage/parcels}" th:object="${parcel}" method="post" class="formUser">
         <label for="address" class="col-form-label">Address:</label>
         <input class="code form-control" type="text" th:field="*{address}" id="address" placeholder="City Street Number Country"
-               pattern="^[A-Za-z\s]+(?:\s[A-Za-z\s]+){1,2}\s\d+\s[A-Za-z\s]+$"
-               title="Format: City Street Number Country"
+               pattern="^[A-Za-ząćęłńóśżź\s\d\.,'-]+$"
+               title="Format: City Street Number Country (including Polish characters)"
                required>
         <br>
+
+
         <label for="email" class="col-form-label">Email:</label>
         <input class="email form-control" type="text" th:field="*{email}" id="email" placeholder="Email" required>
         <br>
