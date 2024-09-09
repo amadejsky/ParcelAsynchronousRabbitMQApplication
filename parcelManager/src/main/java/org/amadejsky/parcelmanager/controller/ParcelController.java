@@ -26,6 +26,10 @@ public class ParcelController {
     public void post(@RequestBody Parcel parcel){
         parcelService.addParcel(parcel);
     }
+    @PostMapping("/json")
+    public void postViaPostman(@RequestBody Parcel parcel){
+        parcelService.addParcel(parcel);
+    }
     @GetMapping("/{code}")
     public Parcel getParcelById(@PathVariable String code){
         return parcelService.getParcel(code);

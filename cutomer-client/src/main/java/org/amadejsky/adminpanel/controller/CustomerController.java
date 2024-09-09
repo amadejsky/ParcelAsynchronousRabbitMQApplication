@@ -27,10 +27,16 @@ public class CustomerController {
         return parcelManagerService.getParcelById(code);
     }
     @PostMapping("/parcels")
-    public ResponseEntity<String> sendParcel(@RequestBody Parcel parcel){
-        parcelManagerService.performPostOperation(parcel);
+    public ResponseEntity<String> sendParcel(@ModelAttribute Parcel parcel){
+        parcelManagerService.performPost(parcel);
         return ResponseEntity.status(HttpStatus.CREATED).body("Parcel created successfully");
     }
+    @PostMapping("/parcels/json")
+    public ResponseEntity<String> sendParcelViaPostman(@RequestBody Parcel parcel){
+        parcelManagerService.performPostmanPost(parcel);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Parcel created successfully");
+    }
+
 
 }
 

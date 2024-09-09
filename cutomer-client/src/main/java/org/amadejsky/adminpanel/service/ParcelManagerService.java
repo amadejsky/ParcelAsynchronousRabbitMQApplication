@@ -12,7 +12,10 @@ public interface ParcelManagerService {
     Parcel getParcelById(@PathVariable String code);
 
     @PostMapping("/parcels")
-    String performPostOperation(@RequestBody Parcel parcel);
+    String performPost(@RequestBody Parcel parcel);
+
+    @PostMapping("/parcels/json")
+    String performPostmanPost(@RequestBody Parcel parcel);
 
 }
 

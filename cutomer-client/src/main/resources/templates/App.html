@@ -106,14 +106,14 @@
 </nav>
 <div class="body">
     <!--/*@thymesVar id="parcel" type="org.amadejsky.adminpanel.model.dto.Parcel"*/-->
-    <form action="#" th:action="@{/parcels}" th:object="${parcel}" method="post" class="formUser">
-        <label for="address" class="col-form-label">Cost:</label>
+    <form action="#" th:action="@{/manage/parcels}" th:object="${parcel}" method="post" class="formUser">
+        <label for="address" class="col-form-label">Address:</label>
         <input class="amount form-control" type="text" th:field="*{address}" id="address" placeholder="Address">
         <br>
-        <label for="email" class="col-form-label">Cost:</label>
+        <label for="email" class="col-form-label">Email:</label>
         <input class="amount form-control" type="text" th:field="*{email}" id="email" placeholder="Email">
         <br>
-        <label for="weight" class="col-form-label">Cost:</label>
+        <label for="weight" class="col-form-label">Weight:</label>
         <input class="amount form-control" type="number" th:field="*{weight}" id="weight" placeholder="Weight" step="0.01">
         <br>
         <input type="submit" class="btn btn-primary" value="Submit" />
