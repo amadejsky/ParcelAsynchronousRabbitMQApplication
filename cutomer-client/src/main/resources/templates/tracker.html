@@ -102,10 +102,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #6D214F" href="/manage/app">App</a>
+                    <a class="nav-link" href="/manage/app">App</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/manage/tracker">Tracker</a>
+                    <a class="nav-link" style="color: #6D214F" href="/manage/tracker">Tracker</a>
                 </li>
             </ul>
         </div>
@@ -113,21 +113,12 @@
 </nav>
 <div class="body">
     <!--/*@thymesVar id="parcel" type="org.amadejsky.adminpanel.model.dto.Parcel"*/-->
-    <form action="#" th:action="@{/manage/parcels}" th:object="${parcel}" method="post" class="formUser">
-        <label for="address" class="col-form-label">Address:</label>
-        <input class="address form-control" type="text" th:field="*{address}" id="address" placeholder="City Street Number Country"
-               pattern="^[A-Za-z\s]+(?:\s[A-Za-z\s]+){1,2}\s\d+\s[A-Za-z\s]+$"
-               title="Format: City Street Number Country"
-               required>
-        <br>
-        <label for="email" class="col-form-label">Email:</label>
-        <input class="email form-control" type="text" th:field="*{email}" id="email" placeholder="Email" required>
-        <br>
-        <label for="weight" class="col-form-label">Weight:</label>
-        <input class="weight form-control" type="number" th:field="*{weight}" id="weight" placeholder="Weight" step="0.1" min="0.1" required>
+    <form action="#" th:action="@{/manage/parcels/{code}(code=${String})}" method="get" class="formUser">
+        <label for="code" class="col-form-label">Code:</label>
+        <input class="address form-control" type="text" name="code" id="code" placeholder="Enter the code to track!" required>
         <br>
         <br>
-        <input type="submit" class="btn btn-warning" value="Submit" />
+        <input type="submit" class="btn btn-warning" value="Check!" />
     </form>
 </div>
 

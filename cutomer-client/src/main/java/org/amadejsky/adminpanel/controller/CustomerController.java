@@ -20,12 +20,31 @@ public class CustomerController {
     @RequestMapping(path="/app")
     public String appPage(Model model){
         model.addAttribute("parcel", new Parcel());
-        return "App";
+        return "app";
     }
+    @RequestMapping(path="/tracker")
+    public String trackerPage(Model model){
+        model.addAttribute("parcel", new Parcel());
+        return "tracker";
+    }
+
     @GetMapping("/parcels/{code}")
-    public Parcel connection(@PathVariable String code){
-        return parcelManagerService.getParcelById(code);
+    public ResponseEntity<Parcel> trackParcelbyCode(@PathVariable String code){
+        Parcel parcel = parcelManagerService.getParcelById(code);
+        if(parcel!=null){
+            return ResponseEntity.ok(parcel);
+        }else{
+            return  ResponseEntity.notFound().build();
+        }
     }
+//    @GetMapping("/parcels/view/{code}")
+//    public String getParcelDetails(@PathVariable String code, Model model) {
+//        Parcel parcel = parcelManagerService.getParcelById(code);
+//        model.addAttribute("parcel", parcel);
+//        return "parcelDetails";
+//    }
+
+
     @PostMapping("/parcels")
     public ResponseEntity<String> sendParcel(@ModelAttribute Parcel parcel){
         parcelManagerService.performPost(parcel);
