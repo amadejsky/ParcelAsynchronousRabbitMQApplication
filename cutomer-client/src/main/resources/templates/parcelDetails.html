@@ -37,6 +37,16 @@
         -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
     }
+    /*.logo{*/
+    /*    background: url("/undraw_Messenger_re_8bky.png");*/
+    /*    background-size: cover;*/
+    /*    background-position: center;*/
+    /*    width: 100px;*/
+    /*    height: 200px;*/
+    /*    margin-left: 30%;*/
+    /*    border: 1px solid red;*/
+
+    /*}*/
     .navbar-brand{
         font-size: x-large;
 
@@ -93,7 +103,7 @@
     }
 </style>
 <body class="">
-<nav class="navbar navbar-expand-lg" style="background-color: #ffcd00">
+<nav class="navbar navbar-expand-lg" style="background-color: #fbc531">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><b>&nbsp;Parcel Flow</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,10 +112,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #6D214F" href="/manage/app">App</a>
+                    <a class="nav-link" href="/manage/app">App</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/manage/tracker">Tracker</a>
+                    <a class="nav-link" style="color: #6D214F" href="/manage/tracker">Tracker</a>
                 </li>
             </ul>
         </div>
@@ -113,23 +123,17 @@
 </nav>
 <div class="body">
     <!--/*@thymesVar id="parcel" type="org.amadejsky.adminpanel.model.dto.Parcel"*/-->
-    <form action="#" th:action="@{/manage/parcels}" th:object="${parcel}" method="post" class="formUser">
-        <label for="address" class="col-form-label">Address:</label>
-        <input class="code form-control" type="text" th:field="*{address}" id="address" placeholder="City Street Number Country"
-               pattern="^[A-Za-z\s]+(?:\s[A-Za-z\s]+){1,2}\s\d+\s[A-Za-z\s]+$"
-               title="Format: City Street Number Country"
-               required>
-        <br>
-        <label for="email" class="col-form-label">Email:</label>
-        <input class="email form-control" type="text" th:field="*{email}" id="email" placeholder="Email" required>
-        <br>
-        <label for="weight" class="col-form-label">Weight:</label>
-        <input class="weight form-control" type="number" th:field="*{weight}" id="weight" placeholder="Weight" step="0.1" min="0.1" required>
-        <br>
-        <br>
-        <input type="submit" class="btn btn-warning" value="Submit" />
-    </form>
-
+    <h2>Parcel Details</h2>
+    <div class="formUser" th:if="${parcel != null}">
+        <p><strong>Status:</strong> <span th:text="${parcel.status}"></span></p>
+        <p><strong>Address:</strong> <span th:text="${parcel.address}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${parcel.email}"></span></p>
+        <p><strong>Weight:</strong> <span th:text="${parcel.weight}"></span> (kg)</p>
+    </div>
+    <div th:if="${error != null}">
+        <p class="text-danger" th:text="${error}"></p>
+    </div>
+    <div class="logo"></div>
 </div>
 
 <div class="footer"></div>

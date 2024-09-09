@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Parcel {
+    private String code;
     @NotBlank
     private String address;
     @NotBlank

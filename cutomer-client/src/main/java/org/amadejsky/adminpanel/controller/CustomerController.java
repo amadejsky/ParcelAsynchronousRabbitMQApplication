@@ -27,14 +27,20 @@ public class CustomerController {
         model.addAttribute("parcel", new Parcel());
         return "tracker";
     }
-
+    @GetMapping("/search")
+    public String searchParcelByCode(@RequestParam("code") String code, Model model) {
+        return "redirect:/manage/parcels/" + code;
+    }
     @GetMapping("/parcels/{code}")
-    public ResponseEntity<Parcel> trackParcelbyCode(@PathVariable String code){
+    public String trackParcelbyCode(@PathVariable String code, Model model){
         Parcel parcel = parcelManagerService.getParcelById(code);
+        System.out.println("Code received: " + code);  // Debugging line
         if(parcel!=null){
-            return ResponseEntity.ok(parcel);
+            model.addAttribute("parcel", parcel);
+            return "parcelDetails";
         }else{
-            return  ResponseEntity.notFound().build();
+            model.addAttribute("error", "Parcel not found");
+            return "tracker";
         }
     }
 //    @GetMapping("/parcels/view/{code}")
