@@ -20,6 +20,9 @@
         background-size: cover;
         background-position: 120px center;
     }
+    .senderInfo{
+        width: 20%;
+    }
     .navbar{
         width:100vw;
     }
@@ -32,7 +35,7 @@
     .dataContainer{
         padding: 2vw;
         margin-top:7vh;
-        width:60%;
+        width:80%;
         max-width: 100%;
         overflow-x: auto;
     }
@@ -47,6 +50,7 @@
     }
     tbody{
         border: 1px solid #6D214F;
+
     }
     @media (max-width: 683px) {
         .dataContainer{
@@ -107,6 +111,7 @@
                 <th>Email</th>
                 <th>Code</th>
                 <th>Weight (kg)</th>
+                <th>Sender info</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -132,6 +137,7 @@
                 <td th:text="${parcel.email}">Email</td>
                 <td th:text="${parcel.code}">Code</td>
                 <td th:text="${parcel.weight}">Weight</td>
+                <td class="senderInfo" th:text="${parcel.senderName}+${parcel.senderLastName}+${parcel.senderAddress}">Sender info</td>
                 <td>
                 <a th:href="@{/admin-tool/delete/{code}(code=${parcel.code})}" class="btn btn-outline-danger btn-sm">
                     <i class="fas fa-user-times ml-2">Delete</i>

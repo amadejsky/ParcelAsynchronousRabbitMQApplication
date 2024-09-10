@@ -114,7 +114,19 @@
 <div class="body">
     <!--/*@thymesVar id="parcel" type="org.amadejsky.adminpanel.model.dto.Parcel"*/-->
     <form action="#" th:action="@{/manage/parcels}" th:object="${parcel}" method="post" class="formUser">
-        <label for="address" class="col-form-label">Address:</label>
+        <label for="name" class="col-form-label">Sender Name:</label>
+        <input class="email form-control" type="text" th:field="*{senderName}" id="name" placeholder="name" required>
+        <br>
+        <label for="last-name" class="col-form-label">Sender Last name:</label>
+        <input class="email form-control" type="text" th:field="*{senderLastName}" id="last-name" placeholder="last-name" required>
+        <br>
+        <label for="address" class="col-form-label">Sender Address:</label>
+        <input class="code form-control" type="text" th:field="*{senderAddress}" id="sender-address" placeholder="City Street Number Country"
+               pattern="^[A-Za-ząćęłńóśżź\s\d\.,'-]+$"
+               title="Format: City Street Number Country (including Polish characters)"
+               required>
+        <br>
+        <label for="address" class="col-form-label">Delivery Address:</label>
         <input class="code form-control" type="text" th:field="*{address}" id="address" placeholder="City Street Number Country"
                pattern="^[A-Za-ząćęłńóśżź\s\d\.,'-]+$"
                title="Format: City Street Number Country (including Polish characters)"

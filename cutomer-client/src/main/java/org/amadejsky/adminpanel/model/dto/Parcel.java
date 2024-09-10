@@ -18,6 +18,12 @@ public class Parcel {
     @Min(value = 0, message = "Weight must be positive number")
     private double weight;
     private Status status = Status.PENDING;
+    @NotBlank
+    private String senderName;
+    @NotBlank
+    private String senderLastName;
+    @NotBlank
+    private String senderAddress;
 
 
     public enum Status{
