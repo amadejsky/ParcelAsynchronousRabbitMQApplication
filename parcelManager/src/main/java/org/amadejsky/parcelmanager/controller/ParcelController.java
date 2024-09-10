@@ -34,10 +34,10 @@ public class ParcelController {
     public Parcel getParcelById(@PathVariable String code){
         return parcelService.getParcel(code);
     }
-    @DeleteMapping("/{code}")
-    public void deleteParcel(@PathVariable String code){
-        parcelService.deleteParcel(code);
-    }
+//    @DeleteMapping("/{code}")
+//    public void deleteParcel(@PathVariable String code){
+//        parcelService.deleteParcel(code);
+//    }
     @GetMapping("/{code}/change-status")
     public void setStatus(@PathVariable String code,@RequestParam Parcel.Status status){
         parcelService.setStatus(code, status);

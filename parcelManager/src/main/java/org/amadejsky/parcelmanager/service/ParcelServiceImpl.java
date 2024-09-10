@@ -23,7 +23,8 @@ public class ParcelServiceImpl implements ParcelService{
         if(status!=null){
             return parcelRepository.findAllByStatus(status);
         }
-        return parcelRepository.findAllByStatusNotInactive();
+        return parcelRepository.findAll();
+        // .findAllByStatusNotInactive() previous concept method
     }
 
     @Override

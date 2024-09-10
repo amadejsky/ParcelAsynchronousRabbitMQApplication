@@ -107,6 +107,7 @@
                 <th>Address</th>
                 <th class="desc">Email</th>
                 <th class="desc">Code</th>
+                <th>Weight (kg)</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -118,12 +119,23 @@
                 <td th:text="${parcel.code}">Code</td>
                 <td th:text="${parcel.weight}">Weight</td>
                 <td>
-                    <form th:action="@{/parcels/{code}(code=${parcel.code})}" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                            <i class="fas fa-user-times ml-2">Delete</i>
-                        </button>
-                    </form>
+<!--                    <form th:action="@{/parcels/delete/{code}(code=${parcel.code})}" method="post">-->
+<!--                        <input type="hidden" name="_method" value="delete">-->
+<!--                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">-->
+<!--                        <button type="submit" class="btn btn-outline-danger btn-sm">-->
+<!--                            <i class="fas fa-user-times ml-2">Delete</i>-->
+<!--                        </button>-->
+<!--                    </form>-->
+
+                                        <a th:href="@{/admin-tool/delete/{code}(code=${parcel.code})}" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-user-times ml-2">Delete</i>
+                    </a>
+<!--                    <form th:action="@{/parcels/{code}(code=${parcel.code})}" method="post">-->
+<!--                        <input type="hidden" name="_method" value="delete">-->
+<!--                        <button type="submit" class="btn btn-outline-danger btn-sm">-->
+<!--                            <i class="fas fa-user-times ml-2">Delete</i>-->
+<!--                        </button>-->
+<!--                    </form>-->
                 </td>
             </tr>
             </tbody>
