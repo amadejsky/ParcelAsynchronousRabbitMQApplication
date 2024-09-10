@@ -52,9 +52,9 @@ public class CustomerController {
 
 
     @PostMapping("/parcels")
-    public ResponseEntity<String> sendParcel(@ModelAttribute Parcel parcel){
+    public String sendParcel(@ModelAttribute Parcel parcel){
         parcelManagerService.performPost(parcel);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Parcel created successfully");
+        return "redirect:/manage/app";
     }
     @PostMapping("/parcels/json")
     public ResponseEntity<String> sendParcelViaPostman(@RequestBody Parcel parcel){
