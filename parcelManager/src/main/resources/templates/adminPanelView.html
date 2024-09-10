@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>|Report| Expense Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .bd{
+        width:100vw;
+        height:100vh;
+        /*background: url("/bg-an.png");*/
+        /*background-size: cover;*/
+        /*background-position: center;*/
+    }
+    .navbar{
+        width:100vw;
+    }
+    .navbar-brand{
+        color: #F0F0F0;
+    }
+    .navbar-nav .nav-link{
+        color: #F0F0F0;
+    }
+    .dataContainer{
+        padding: 2vw;
+        margin-top:7vh;
+        width:60%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    th{
+        width:2vw;
+    }
+    tbody{
+        border: 1px solid #6D214F;
+    }
+    @media (max-width: 683px) {
+        .dataContainer{
+            width:80%;
+        }
+    }
+    @media (max-width: 499px) {
+        .dataContainer{
+            width:100%;
+        }
+    }
+    @media (max-width: 400px) {
+       .navbar-brand{
+           font-size: 4.3vw;
+       }
+    }
+    @media (max-width: 384px) {
+        th{
+            font-size: 3vw;
+        }
+    }
+    @media (max-width: 384px) {
+        th{
+            width: 50%;
+            font-size: 3vw;
+        }
+        td{
+            width: 50%;
+            font-size: 3vw;
+        }
+        tr{
+            width: 50%;
+            font-size: 3vw;
+        }
+    }
+
+</style>
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg" style="background-color: #0A005A">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Your Finance Friend!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/app">App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #6D214F" href="/report">Report</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="bd">
+    <div class="dataContainer">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Category</th>
+                <th class="desc">Description</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+<!--            <tr th:each="parcel : ${parcel}">-->
+<!--                <td th:text="${parcel.status}">Status</td>-->
+<!--                <td th:text="${parcel.address}">Address</td>-->
+<!--                <td th:text="${parcel.email}">Email</td>-->
+<!--                <td th:text="${parcel.weight}">Weight</td>-->
+<!--                <td>-->
+<!--                    <form th:action="@{/parcels/delete/{code}(id=${expense.id})}" method="post">-->
+<!--                        <input type="hidden" name="_method" value="delete">-->
+<!--                        <button type="submit" class="btn btn-outline-danger btn-sm">-->
+<!--                            <i class="fas fa-user-times ml-2">Delete</i>-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                </td>-->
+<!--            </tr>-->
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="footer"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
