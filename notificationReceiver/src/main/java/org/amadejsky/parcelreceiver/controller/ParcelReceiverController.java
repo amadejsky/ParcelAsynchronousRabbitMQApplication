@@ -14,12 +14,13 @@ public class ParcelReceiverController {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @RabbitListener(queues = "test")
+    @RabbitListener(queues = "parcel_manager_event")
     public void listener(NotificationEmail notificationEmail){
         System.out.println(
-                "Email: "+notificationEmail.getEmail()+"\n "+
-                "Title "+notificationEmail.getTitle()+"\n "+
-                "Content: "+notificationEmail.getContent()
+                "Parcel with code: "+notificationEmail.getCode()+"\n "+
+                "has been  "+notificationEmail.getInfo()+"\n "+
+                "with delivery address: "+notificationEmail.getAddress()+"\n "+
+                "and status: "+notificationEmail.getStatus()
         );
     }
 
